@@ -1,4 +1,4 @@
-package br.org.generation.lojagames.model;
+package br.org.generation.farmacia.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,16 +7,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
+@Entity //tabela
 @Table(name = "tb_categoria")
 public class Categoria {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@NotNull (message = "O tipo não pode ser nulo!")
+
+	@NotNull(message = "O tipo é de preenchimento obrigatório")
 	private String tipo;
+	
 
 	public long getId() {
 		return id;
@@ -33,7 +34,6 @@ public class Categoria {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	
+
 	
 }

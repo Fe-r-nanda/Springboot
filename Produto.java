@@ -1,4 +1,4 @@
-package br.org.generation.lojagames.model;
+package br.org.generation.farmacia.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,12 +12,13 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity          // = tabela
-@Table(name = "tb_produto")
+
+@Entity
+@Table(name = "tb_produtos")
 public class Produto {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)   // = auto_increment
+	@GeneratedValue(strategy = GenerationType.IDENTITY)  
 	private long id;
 	
 	@NotNull(message = "O campo NOME deve ser preenchido!")
@@ -26,16 +27,13 @@ public class Produto {
 	@Size(min = 5, max = 500)
 	private String descricao;
 	
-	@NotNull(message = "Defina o console!")
-	private String console;
-	
 	@NotNull
-	@Positive // obriga que o valor seja positivo
+	@Positive 
 	private double preco;
 	
-	@ManyToOne        // muitos pra 1 chave estrangeira
+	@ManyToOne        //  chave estrangeira
 	@JsonIgnoreProperties("produto")  // mostra apenas uma vez, corta a repetição infinita
-	private Categoria categoria;      // atributo categoria referente ao prudto que contem a categoria
+	private Categoria categoria;
 
 	public long getId() {
 		return id;
@@ -61,14 +59,6 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public String getConsole() {
-		return console;
-	}
-
-	public void setConsole(String console) {
-		this.console = console;
-	}
-
 	public double getPreco() {
 		return preco;
 	}
@@ -83,6 +73,7 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}
+	} 
 
+	
 }
